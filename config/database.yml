@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: pisscode_production
-  username: pisscode
-  password: <%= ENV['PISSCODE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
