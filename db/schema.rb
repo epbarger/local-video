@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151107021405) do
   create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
     t.string   "ip",         null: false
     t.decimal  "lat"
     t.decimal  "lng"

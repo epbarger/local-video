@@ -1,10 +1,14 @@
-- if @user.lat.blank? || @user.lng.blank?
-  = link_to 'Fetch Lat Lng', '#', class: 'btn btn-primary', id: 'fetchLatLng'
-- else
-  = link_to 'Refresh Lat Lng', '#', class: 'btn btn-primary', id: 'fetchLatLng'
-  %h4= "#{@user.lat}, #{@user.lng}"
-
-  %hr
-
-  - @videos.each do |video|
-    = render partial: 'show', locals: {video: video}
+.row
+  .col-sm-8
+    - if @user.lat.blank? || @user.lng.blank?
+      = link_to 'Fetch Lat Lng', '#', class: 'btn btn-primary', id: 'fetchLatLng'
+    - else
+      %h5
+        video from #{@user.lat.round(2)}, #{@user.lng.round(2)}
+        %small= link_to 'refresh', '#', id: 'fetchLatLng'
+      - @videos.each do |video|
+        = render partial: 'show', locals: {video: video}
+  .col-sm-4
+    %h5 a previous user viewed video from #{@previous_user.lat.round(2)}, #{@previous_user.lng.round(2)}
+    - @previous_user.videos.each do |video|
+      = render partial: 'show', locals: {video: video}

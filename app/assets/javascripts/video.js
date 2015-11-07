@@ -15,7 +15,7 @@ function showPosition(position) {
       lng: position.coords.longitude
     },
     success: function(){
-      console.log('lat lng updated succesfully')
+      location.reload(true)
     },
     error: function(){
       console.log('error updating lat lng')

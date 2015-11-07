@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Local YouTube</title>
+  <title>Local Video</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -14,9 +14,16 @@
 </head>
 <body>
   <div class='container'>
-    <h1>Local YouTube</h1>
+    <h1>Local Video
+      <small> find YouTube content from your immediate area </small>
+    </h1>
     <hr>
     <%= yield %>
+    <footer>
+      <span class='pull-right'>
+        <%=image_tag 'pwrdByYT-black.png', width: 250 %>
+      </span>
+    </footer>
   </div>
 </body>
 </html>

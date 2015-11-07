@@ -1,7 +1,7 @@
 %blockquote
   .row
     .col-lg-4
-      = image_tag video.thumbnails['medium']['url']
+      = image_tag video.thumbnails['medium']['url'], class: 'video_thumb'
     .col-lg-8
       = video.title
       = link_to 'link', "https://www.youtube.com/watch?v=#{video.video_id}"
