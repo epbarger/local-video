@@ -1,0 +1,10 @@
+- if @user.lat.blank? || @user.lng.blank?
+  = link_to 'Fetch Lat Lng', '#', class: 'btn btn-primary', id: 'fetchLatLng'
+- else
+  = link_to 'Refresh Lat Lng', '#', class: 'btn btn-primary', id: 'fetchLatLng'
+  %h4= "#{@user.lat}, #{@user.lng}"
+
+  %hr
+
+  - @videos.each do |video|
+    = render partial: 'show', locals: {video: video}
