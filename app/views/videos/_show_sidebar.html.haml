@@ -1,0 +1,8 @@
+%blockquote
+  .row
+    .col-lg-12
+      = image_tag video.thumbnails['medium']['url'], class: 'video-thumb'
+  .row
+    .col-lg-12
+      .h4.truncate-text= video.title
+      = link_to 'link', "https://www.youtube.com/watch?v=#{video.video_id}"

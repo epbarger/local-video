@@ -1,7 +1,5 @@
 %blockquote
   .row
-    .col-lg-4
-      = image_tag video.thumbnails['medium']['url'], class: 'video_thumb'
-    .col-lg-8
-      = video.title
-      = link_to 'link', "https://www.youtube.com/watch?v=#{video.video_id}"
+    .col-lg-12
+      .video-wrapper
+        %iframe{ width: "560", height: "315", src: "https://www.youtube.com/embed/#{video.video_id}", frameborder: "0", allowfullscreen: true }
