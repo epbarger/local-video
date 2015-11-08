@@ -12,12 +12,16 @@
         = link_to 'refresh', '#', id: 'fetchLatLng', class: 'btn btn-danger btn-xs hide-on-click'
         %span.location-refresh.pull-right
           = image_tag 'ajax-loader.gif', id: 'refresh-location-img', class: 'hide'
-          = form_tag 'submit' do
+          = form_tag 'submit', class: 'pull-right' do
             = text_field_tag :query, session[:query], style: 'height: 20px; width: 120px', placeholder: 'filter results'
             = select_tag :radius, options_for_select([['1 mile', '1mi'], ['2 miles', '2mi'], ['5 miles', '5mi'], ['10 miles', '10mi'], ['20 miles', '20mi']], session[:radius])
       .main-videos
-        - @videos.each do |video|
-          = render partial: 'show', locals: {video: video}
+        - if @videos.present?
+          - @videos.each do |video|
+            = render partial: 'show', locals: {video: video}
+        - else
+          .request-location.main-videos
+            .h1 Nothing Found :(
   .col-sm-3.right-border
     - if @previous_user
       .video-sidebar
