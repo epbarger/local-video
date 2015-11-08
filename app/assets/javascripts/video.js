@@ -2,7 +2,10 @@ function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    alert("Geolocation is not supported by this browser.")
+    $('#refresh-location-img').addClass('hide')
+    $('#fetchLatLng').removeClass('hide')
+    $('.main-videos').css({ opacity: 1 })
+    alert("sorry, geolocation is not supported by this browser")
   }
 }
 
@@ -18,13 +21,19 @@ function showPosition(position) {
       location.reload(true)
     },
     error: function(){
-      console.log('error updating lat lng')
+      $('#refresh-location-img').addClass('hide')
+      $('#fetchLatLng').removeClass('hide')
+      $('.main-videos').css({ opacity: 1 })
+      alert("sorry, an error occured on the server")
     }
   })
 }
 
 $(function(){
   $('#fetchLatLng').on('click', function(){
+    $('#refresh-location-img').removeClass('hide')
+    $(this).addClass('hide')
+    $('.main-videos').fadeTo(400, 0.3)
     getLocation();
   });
 })

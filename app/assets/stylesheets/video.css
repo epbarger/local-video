@@ -8,17 +8,36 @@ img.video-thumb {
   overflow: hidden;
 }
 
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  padding-top: 25px;
-  height: 0;
+.location-refresh {
+  margin-right:20px;
 }
 
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.right-border {
+  border-left: 1px solid rgb(238, 238, 238);
+}
+
+.main-video {
+  margin: 20px 20px 20px 20px;
+  margin-top: 0px;
+}
+
+.bg-danger.location-header{
+  color: rgb(217, 83, 79);
+}
+
+.main-video-header{
+  margin-bottom:10px;
+}
+
+.meta-video > .h6 {
+  margin-top: 2px;
+  color: #777;
+}
+
+.video-title.h5{
+  margin-top: 2px;
+}
+
+.video-title.h5 > a {
+  color: black;
 }

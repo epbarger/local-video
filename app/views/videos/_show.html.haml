@@ -1,5 +1,7 @@
-%blockquote
-  .row
-    .col-lg-12
-      .video-wrapper
-        %iframe{ width: "560", height: "315", src: "https://www.youtube.com/embed/#{video.video_id}", frameborder: "0", allowfullscreen: true }
+.row
+  .col-lg-12
+    .main-video
+      .embed-responsive.embed-responsive-16by9
+        %iframe{ width: "560", height: "315", src: "https://www.youtube.com/embed/#{video.video_id}", allowfullscreen: true }
+      .meta-video.text-right
+        .h6.pull-right published @ #{video.published_at.in_time_zone}

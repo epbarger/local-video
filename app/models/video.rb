@@ -8,7 +8,7 @@ class Video
       Video.new(
         etag: api_hash['etag'],
         video_id: api_hash['id']['videoId'],
-        published_at: api_hash['snippet']['publishedAt'],
+        published_at: Time.parse(api_hash['snippet']['publishedAt']),
         title: api_hash['snippet']['title'],
         description: api_hash['snippet']['description'],
         thumbnails: api_hash['snippet']['thumbnails'],
