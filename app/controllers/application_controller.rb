@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def get_or_create_user(user_id)
     user = User.where(id: user_id).first if user_id
+    user = User.where(ip: request.remote_ip, address: params[:geo]).first if !user
     if !user
       user = User.create!(ip: request.remote_ip)
       session[:user_id] = user.id
