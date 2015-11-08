@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :videos, :radius
+  attr_accessor :videos, :radius, :query
 
   def videos
     unless @videos.present?
@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
                                                 location: "#{lat},#{lng}",
                                                 locationRadius: radius || '1mi', # '1mi', '2mi', '5mi', '10mi', '20mi'
                                                 order: 'date',
-                                                type: 'video'
+                                                type: 'video',
+                                                q: query || nil
                                               }
       google_response = JSON.parse(unparsed_google_response.body)
       Video.videos_from_api(google_response['items'])

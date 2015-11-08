@@ -58,4 +58,5 @@ Rails.application.routes.draw do
 
   put 'update_location' => 'users#update_lat_lng'
   put 'update_radius' => 'users#update_radius'
+  post 'submit' => 'users#filter_query'
 end

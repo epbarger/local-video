@@ -17,4 +17,10 @@ class UsersController < ApplicationController
     session[:radius] = params[:radius]
     render json: { success: 'true' }
   end
+
+  def filter_query
+    session[:radius] = params[:radius]
+    session[:query] = params[:query]
+    redirect_to root_path
+  end
 end
