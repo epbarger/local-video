@@ -14,7 +14,7 @@
           = image_tag 'ajax-loader.gif', id: 'refresh-location-img', class: 'hide'
           = form_tag 'submit', class: 'pull-right' do
             = text_field_tag :query, session[:query], style: 'height: 20px; width: 120px', placeholder: 'filter results'
-            = select_tag :radius, options_for_select([['1 mile', '1mi'], ['2 miles', '2mi'], ['5 miles', '5mi'], ['10 miles', '10mi'], ['20 miles', '20mi']], session[:radius])
+            = select_tag :radius, options_for_select([['1 mile', '1mi'], ['2 miles', '2mi'], ['5 miles', '5mi'], ['10 miles', '10mi'], ['20 miles', '20mi']], session[:radius] || '2mi')
       .main-videos
         - if @videos.present?
           - @videos.each do |video|

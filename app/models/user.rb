@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
       unparsed_google_response = conn.get '', { key: ENV['GOOGLE_API_KEY'],
                                                 part: 'snippet',
                                                 location: "#{lat},#{lng}",
-                                                locationRadius: radius || '1mi', # '1mi', '2mi', '5mi', '10mi', '20mi'
+                                                locationRadius: radius || '2mi', # '1mi', '2mi', '5mi', '10mi', '20mi'
                                                 order: 'date',
                                                 type: 'video',
                                                 q: query || nil
