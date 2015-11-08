@@ -57,4 +57,5 @@ Rails.application.routes.draw do
   root 'videos#index'
 
   put 'update_location' => 'users#update_lat_lng'
+  put 'update_radius' => 'users#update_radius'
 end

@@ -62,8 +62,31 @@ $(function(){
   $('#fetchLatLng').on('click', function(e){
     e.preventDefault()
     $('#refresh-location-img').removeClass('hide')
-    $(this).addClass('hide')
+    if ($(this).hasClass('hide-on-click')){
+      $(this).addClass('hide')
+    }
     $('.main-videos').fadeTo(400, 0.3)
     getLocation();
   });
+
+  $('#radius').on('change', function(e){
+    $('#refresh-location-img').removeClass('hide')
+
+    $.ajax({
+      url: 'update_radius',
+      type: 'PUT',
+      data: {
+        radius: $(this).val()
+      },
+      success: function(){
+        location.reload(true)
+      },
+      error: function(){
+        $('#refresh-location-img').addClass('hide')
+        $('#fetchLatLng').removeClass('hide')
+        $('.main-videos').css({ opacity: 1 })
+        alert("sorry, an error occured on the server")
+      }
+    })
+  })
 })

@@ -1,24 +1,29 @@
 .row
   .col-sm-9
     - if @user.lat.blank? || @user.lng.blank?
-      = link_to 'Fetch Lat Lng', '#', class: 'btn btn-primary', id: 'fetchLatLng'
+      .request-location.main-videos
+        .h1 Location Required
+        %p To find videos near you we'll need your current location. This data will not be shared in any way.
+        = link_to 'Grant Permission', '#', class: 'btn btn-danger btn-lg grant-permission-btn', id: 'fetchLatLng'
     - else
       .main-video-header
         %span.h4.bg-danger.location-header
           video from #{@user.address.gsub(',','').upcase}
+        = link_to 'refresh', '#', id: 'fetchLatLng', class: 'btn btn-danger btn-xs hide-on-click'
         %span.location-refresh.pull-right
           =image_tag 'ajax-loader.gif', id: 'refresh-location-img', class: 'hide'
-          %small= link_to 'refresh', '#', id: 'fetchLatLng', class: 'btn btn-danger btn-xs'
+          = select_tag :radius, options_for_select([['1 mile', '1mi'], ['2 miles', '2mi'], ['5 miles', '5mi'], ['10 miles', '10mi'], ['20 miles', '20mi']], session[:radius])
       .main-videos
         - @videos.each do |video|
           = render partial: 'show', locals: {video: video}
   .col-sm-3.right-border
-    .video-sidebar
-      .sidebar-header
-        %span.h5.bg-danger.location-header.text-right#sidebar-header-text
-          / #{@previous_user.lat.round(2)}, #{@previous_user.lng.round(2)}
-          more from #{@previous_user.address.gsub(',','').upcase}
-        / %span.pull-right
-        /   %small= link_to 'random', '#', id: 'getRandom', class: 'btn btn-danger btn-xs'
-      - @previous_user.videos.each do |video|
-        = render partial: 'show_sidebar', locals: {video: video}
+    - if @previous_user
+      .video-sidebar
+        .sidebar-header
+          %span.h5.bg-danger.location-header.text-right#sidebar-header-text
+            / #{@previous_user.lat.round(2)}, #{@previous_user.lng.round(2)}
+            more from #{@previous_user.address.gsub(',','').upcase}
+          / %span.pull-right
+          /   %small= link_to 'random', '#', id: 'getRandom', class: 'btn btn-danger btn-xs'
+        - @previous_user.videos.each do |video|
+          = render partial: 'show_sidebar', locals: {video: video}

@@ -12,6 +12,11 @@ img.video-thumb {
   border-left: 1px solid rgb(238, 238, 238);
 }
 
+#refresh-location-img{
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
 .main-video {
   margin-bottom: 30px;
 }
@@ -20,6 +25,7 @@ img.video-thumb {
   color: rgb(217, 83, 79);
   padding-left:3px;
   padding-right:3px;
+  vertical-align: middle;
 }
 
 #sidebar-header-text{
@@ -45,6 +51,23 @@ img.video-thumb {
 
 .video-title.h5 > a {
   color: black;
+}
+
+.request-location {
+  margin-top: 130px;
+  text-align: center;
+}
+
+.request-location > .h1 {
+  font-size: 63px;
+}
+
+.grant-permission-btn {
+  margin-top:35px;
+}
+
+h1.title{
+  font-size:42px;
 }
 
 body {

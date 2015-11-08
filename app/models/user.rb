@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :videos
+  attr_accessor :videos, :radius
 
   def videos
     unless @videos.present?
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
       unparsed_google_response = conn.get '', { key: ENV['GOOGLE_API_KEY'],
                                                 part: 'snippet',
                                                 location: "#{lat},#{lng}",
-                                                locationRadius: '1mi',
+                                                locationRadius: radius || '1mi', # '1mi', '2mi', '5mi', '10mi', '20mi'
                                                 order: 'date',
                                                 type: 'video'
                                               }
@@ -34,8 +34,12 @@ class User < ActiveRecord::Base
   class << self
     def random
       count = User.where.not(address: nil).count
-      result = ActiveRecord::Base.connection.execute("SELECT id FROM users WHERE address IS NOT NULL OFFSET floor(random()*#{count}) LIMIT 1;")
-      User.find(result.first['id'])
+      if count > 0
+        result = ActiveRecord::Base.connection.execute("SELECT id FROM users WHERE address IS NOT NULL OFFSET floor(random()*#{count}) LIMIT 1;")
+        User.find(result.first['id'])
+      else
+        nil
+      end
     end
   end
 end

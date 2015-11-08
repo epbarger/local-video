@@ -12,4 +12,9 @@ class UsersController < ApplicationController
     session[:user_id] = user.id
     render json: { success: 'true' }
   end
+
+  def update_radius
+    session[:radius] = params[:radius]
+    render json: { success: 'true' }
+  end
 end

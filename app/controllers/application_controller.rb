@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def get_or_create_user(user_id)
-    if user_id
-      User.find(user_id)
-    else
+    user = User.where(id: user_id).first if user_id
+    if !user
       user = User.create!(ip: request.remote_ip)
       session[:user_id] = user.id
       user
     end
+    user
   end
 end
