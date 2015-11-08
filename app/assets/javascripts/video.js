@@ -1,3 +1,6 @@
+override_lat = null
+override_lng = null
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getReverseGeocodingData);
@@ -11,12 +14,14 @@ function getLocation() {
 
 
 function updateOnServer(position, geocodeString) {
+  var lat = override_lat || position.coords.latitude
+  var lng = override_lng || position.coords.longitude
   $.ajax({
     url: 'update_location',
     type: 'PUT',
     data: {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
+      lat: lat,
+      lng: lng,
       geo: geocodeString
     },
     success: function(){
@@ -32,7 +37,9 @@ function updateOnServer(position, geocodeString) {
 }
 
 function getReverseGeocodingData(position) {
-  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  var lat = override_lat || position.coords.latitude
+  var lng = override_lng || position.coords.longitude
+  var latlng = new google.maps.LatLng(lat, lng);
   // This is making the Geocode request
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode({ 'latLng': latlng }, function (results, status) {
