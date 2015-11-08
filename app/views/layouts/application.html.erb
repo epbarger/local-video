@@ -11,19 +11,27 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
 </head>
 <body>
   <div class='container'>
     <h1>Local Video
       <small> find YouTube content from your immediate area </small>
+      <%=image_tag 'pwrdByYT-black.png', width: 175, class: 'pull-right' %>
     </h1>
     <hr>
     <%= yield %>
-    <footer>
-      <span class='pull-right'>
-        <%=image_tag 'pwrdByYT-black.png', width: 250 %>
-      </span>
-    </footer>
+    </br>
+    </br>
   </div>
+
+  <script type="text/javascript">
+    var rumbleBannerBackgroundColor, rumbleBannerTextColor, rumbleBannerLinkColor, rumbleBannerPlacement;
+    rumbleBannerBackgroundColor = "#161616";
+    rumbleBannerTextColor = "#b0b0b0";
+    rumbleBannerLinkColor = "#ffffff";
+    rumbleBannerPlacement = "top"; // Optionally replace with "bottom".
+  </script>
+  <script src="https://d4nnn7wspfa3h.cloudfront.net/banner-2015.js" type="text/javascript"></script>
 </body>
 </html>

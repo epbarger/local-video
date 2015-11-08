@@ -16,7 +16,7 @@
     .video-sidebar
       .main-video-header
         %span.h4.bg-danger.location-header.text-right 
-          video from #{@previous_user.lat.round(2)}, #{@previous_user.lng.round(2)}
+          #{@previous_user.lat.round(2)}, #{@previous_user.lng.round(2)}
         %span.pull-right
           %small= link_to 'random', '#', id: 'getRandom', class: 'btn btn-danger btn-xs'
       - @previous_user.videos.each do |video|

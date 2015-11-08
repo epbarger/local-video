@@ -8,21 +8,18 @@ img.video-thumb {
   overflow: hidden;
 }
 
-.location-refresh {
-  margin-right:20px;
-}
-
 .right-border {
   border-left: 1px solid rgb(238, 238, 238);
 }
 
 .main-video {
-  margin: 20px 20px 20px 20px;
-  margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 .bg-danger.location-header{
   color: rgb(217, 83, 79);
+  padding-left:3px;
+  padding-right:3px;
 }
 
 .main-video-header{
@@ -40,4 +37,8 @@ img.video-thumb {
 
 .video-title.h5 > a {
   color: black;
+}
+
+body {
+  padding-top: 45px;
 }
