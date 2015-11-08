@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :videos, :address
+  attr_accessor :videos
 
   def videos
     unless @videos.present?
@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
 
   class << self
     def random
-      count = User.where.not(lat: nil, lng: nil).count
-      result = ActiveRecord::Base.connection.execute("SELECT id FROM users WHERE lat IS NOT NULL AND lng IS NOT NULL OFFSET floor(random()*#{count}) LIMIT 1;")
+      count = User.where.not(address: nil).count
+      result = ActiveRecord::Base.connection.execute("SELECT id FROM users WHERE address IS NOT NULL OFFSET floor(random()*#{count}) LIMIT 1;")
       User.find(result.first['id'])
     end
   end

@@ -5,7 +5,7 @@
     - else
       .main-video-header
         %span.h4.bg-danger.location-header
-          video from #{@user.lat.round(2)}, #{@user.lng.round(2)}
+          video from #{@user.address.gsub(',','').upcase}
         %span.location-refresh.pull-right
           =image_tag 'ajax-loader.gif', id: 'refresh-location-img', class: 'hide'
           %small= link_to 'refresh', '#', id: 'fetchLatLng', class: 'btn btn-danger btn-xs'
@@ -14,10 +14,11 @@
           = render partial: 'show', locals: {video: video}
   .col-sm-3.right-border
     .video-sidebar
-      .main-video-header
-        %span.h4.bg-danger.location-header.text-right 
-          #{@previous_user.lat.round(2)}, #{@previous_user.lng.round(2)}
-        %span.pull-right
-          %small= link_to 'random', '#', id: 'getRandom', class: 'btn btn-danger btn-xs'
+      .sidebar-header
+        %span.h5.bg-danger.location-header.text-right#sidebar-header-text
+          / #{@previous_user.lat.round(2)}, #{@previous_user.lng.round(2)}
+          more from #{@previous_user.address.gsub(',','').upcase}
+        / %span.pull-right
+        /   %small= link_to 'random', '#', id: 'getRandom', class: 'btn btn-danger btn-xs'
       - @previous_user.videos.each do |video|
         = render partial: 'show_sidebar', locals: {video: video}

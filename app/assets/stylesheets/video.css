@@ -22,8 +22,16 @@ img.video-thumb {
   padding-right:3px;
 }
 
+#sidebar-header-text{
+  white-space: nowrap;
+}
+
 .main-video-header{
   margin-bottom:10px;
+}
+
+.sidebar-header {
+  margin-bottom:12px;
 }
 
 .meta-video > .h6 {
