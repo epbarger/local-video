@@ -58,8 +58,14 @@ img.video-thumb {
   text-align: center;
 }
 
-.request-location > .h1 {
+.request-location .h1 {
   font-size: 63px;
+  letter-spacing: -0.5px;
+  font-weight: bold;
+}
+
+.request-location > #refresh-location-img {
+  margin-top: 45px;
 }
 
 .grant-permission-btn {
@@ -68,6 +74,8 @@ img.video-thumb {
 
 h1.title{
   font-size:42px;
+  font-weight: bold;
+  letter-spacing: -0.5px;
 }
 
 body {

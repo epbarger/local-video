@@ -8,7 +8,7 @@ function getLocation() {
     $('#refresh-location-img').addClass('hide')
     $('#fetchLatLng').removeClass('hide')
     $('.main-videos').css({ opacity: 1 })
-    alert("sorry, geolocation is not supported by this browser")
+    alert("Sorry, your browser does not support geolocation.")
   }
 }
 
@@ -72,7 +72,7 @@ $(function(){
     if ($(this).hasClass('hide-on-click')){
       $(this).addClass('hide')
     }
-    $('.main-videos').fadeTo(400, 0.3)
+    $('.fade-section').fadeTo(400, 0.3)
     getLocation();
   });
 

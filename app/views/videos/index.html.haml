@@ -1,11 +1,14 @@
 .row
-  .col-sm-9
-    - if @user.lat.blank? || @user.lng.blank?
-      .request-location.main-videos
+  - if @user.lat.blank? || @user.lng.blank?
+    .request-location.main-videos
+      .fade-section
         .h1 Location Required
-        %p To find videos near you we'll need your current location. This data will not be shared in any way.
-        = link_to 'Grant Permission', '#', class: 'btn btn-danger btn-lg grant-permission-btn', id: 'fetchLatLng'
-    - else
+        %p To find videos near you we'll need your current location.
+      = link_to 'Grant Permission', '#', class: 'btn btn-danger btn-lg grant-permission-btn hide-on-click', id: 'fetchLatLng'
+      = image_tag 'ajax-loader.gif', id: 'refresh-location-img', class: 'hide'
+
+  - else
+    .col-sm-9
       .main-video-header
         %span.h4.bg-danger.location-header
           video from #{@user.address.gsub(',','').upcase}
@@ -22,11 +25,11 @@
         - else
           .request-location.main-videos
             .h1 Nothing Found :(
-  .col-sm-3.right-border
-    - if @previous_user
-      .video-sidebar
-        .sidebar-header
-          %span.h5.bg-danger.location-header.text-right#sidebar-header-text
-            more from #{@previous_user.address.gsub(',','').upcase}
-        - @previous_user.videos.each do |video|
-          = render partial: 'show_sidebar', locals: {video: video}
+    .col-sm-3.right-border
+      - if @previous_user
+        .video-sidebar
+          .sidebar-header
+            %span.h5.bg-danger.location-header.text-right#sidebar-header-text
+              more from #{@previous_user.address.gsub(',','').upcase}
+          - @previous_user.videos.each do |video|
+            = render partial: 'show_sidebar', locals: {video: video}
