@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   def get_videos
     if lat && lng
-      conn = ::Faraday.new(:url => ENV['YOUTUBE_BASE_URL']) do |faraday|
+      conn = ::Faraday.new(:url => 'https://www.googleapis.com/youtube/v3/search') do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
